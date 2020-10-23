@@ -1,0 +1,27 @@
+<html>
+	<div class="footer">
+		<table>
+			<tr>
+				<td> © <?php echo"$site_name";?> </td>
+				<td>
+					<b><?php echo"$site_name";?></b>
+					<br>
+					<?php $result = mysql_query("SELECT name, directory FROM Page WHERE type='Principal' ORDER BY id_item "); while($row = mysql_fetch_array($result)) 
+					{echo "<a href='../../".$row{'directory'}."'>".$row{'name'}."</a><br>";}?>
+				</td> 
+				<td> 
+					<b> Ciudades </b>
+					<br>
+					<?php $result = mysql_query("SELECT Location.ciudad, directory FROM Location, Establecimiento WHERE Establecimiento.ciudad = Location.ciudad GROUP BY ciudad"); while($row = mysql_fetch_array($result)) 
+					{echo "<a href='../../".$row{'ciudad'}."'>".$row{'ciudad'}."</a><br>";}?>
+				</td> 
+				<td>
+					<b> Otros links </b>
+					<br>
+					<?php $result = mysql_query("SELECT name, directory FROM Page WHERE type='Otros links' ORDER BY id_item "); while($row = mysql_fetch_array($result)) 
+					{echo "<a href='../../".$row{'directory'}."'>".$row{'name'}."</a><br>";}?>
+				</td>
+			</tr>
+		</table>
+	</div>
+</html>
